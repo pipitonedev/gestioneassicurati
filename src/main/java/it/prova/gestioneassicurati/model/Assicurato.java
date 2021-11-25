@@ -1,6 +1,7 @@
 package it.prova.gestioneassicurati.model;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,43 +12,32 @@ public class Assicurato {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
-
-	@Column(name = "nome")
-	private String nome;
-
-	@Column(name = "cognome")
-	private String cognome;
-
-	@Column(name = "dataDiNascita")
-	private String dataDiNascita;
-
-	@Column(name = "codiceFiscale")
-	private String codiceFiscale;
-
-	@Column(name = "numeroSinistri")
-	private Integer numeroSinistri;
+	Long id;
+	String nome;
+	String cognome;
+	Date dataDiNascita;
+	String codiceFiscale;
+	Integer numeroSinistri;
 
 	public Assicurato() {
 	}
 
-	public Assicurato(Long id, String nome, String cognome, String dataDiNascita, String codiceFiscale,
+	public Assicurato(String nome, String cognome, Date dataDINascita, String codiceFiscale, Integer numeroSinistri) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataDiNascita = dataDINascita;
+		this.codiceFiscale = codiceFiscale;
+		this.numeroSinistri = numeroSinistri;
+	}
+
+	public Assicurato(Long id, String nome, String cognome, Date dataDINascita, String codiceFiscale,
 			Integer numeroSinistri) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.dataDiNascita = dataDiNascita;
-		this.codiceFiscale = codiceFiscale;
-		this.numeroSinistri = numeroSinistri;
-	}
-
-	public Assicurato(String nome, String cognome, String dataDiNascita, String codiceFiscale, Integer numeroSinistri) {
-		super();
-		this.nome = nome;
-		this.cognome = cognome;
-		this.dataDiNascita = dataDiNascita;
+		this.dataDiNascita = dataDINascita;
 		this.codiceFiscale = codiceFiscale;
 		this.numeroSinistri = numeroSinistri;
 	}
@@ -76,12 +66,12 @@ public class Assicurato {
 		this.cognome = cognome;
 	}
 
-	public String getDataDiNascita() {
+	public Date getDataDINascita() {
 		return dataDiNascita;
 	}
 
-	public void setDataDiNascita(String dataDiNascita) {
-		this.dataDiNascita = dataDiNascita;
+	public void setDataDINascita(Date dataDINascita) {
+		this.dataDiNascita = dataDINascita;
 	}
 
 	public String getCodiceFiscale() {
