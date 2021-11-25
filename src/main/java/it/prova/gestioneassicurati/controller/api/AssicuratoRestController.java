@@ -79,12 +79,17 @@ public class AssicuratoRestController {
 			System.out.println("Lista Assicurati:");
 			List<Assicurato> list = que.getAssicurato();
 			for (Assicurato ans : list) {
-				if (ans.getNumerosinistri().intValue() < 0 && ans.getNumerosinistri().intValue() > 10) {
+				if (ans.getNumerosinistri() < 0 && ans.getNumerosinistri() > 10) {
 					xmlFile.renameTo(new File("C:\\corso\\ws_eclipse2\\gestioneassicurati\\scartati\\assicurato.xml"));
 					System.out.println("li ho scartati");
 				}
+				if(assicuratoService.cercaPerCodiceFiscale(ans.getCodicefiscale()) != null){
+					Assicurato assicurato = assicuratoService.cercaPerCodiceFiscale(ans.getCodicefiscale());
+					assicurato.setNumerosinistri(assicurato.getNumerosinistri()+ans.getNumerosinistri());
+					assicuratoService.save(assicurato);
+				}
+				assicuratoService.save(ans);
 				xmlFile.renameTo(new File("C:\\corso\\ws_eclipse2\\gestioneassicurati\\processati\\assicurato.xml"));
-
 			}
 
 		} catch (JAXBException e) {
