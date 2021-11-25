@@ -6,8 +6,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.springframework.stereotype.Service;
+
 import it.prova.gestioneassicurati.xml.Assicurati;
 
+@Service
 public class FileProcessingServiceImpl implements FileProcessingService {
 
 	@Override

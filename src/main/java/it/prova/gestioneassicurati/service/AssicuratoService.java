@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import it.prova.gestioneassicurati.xml.Assicurati.Assicurato;
+import it.prova.gestioneassicurati.model.Assicurato;
 
 @Service
 public interface AssicuratoService {

@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import it.prova.gestioneassicurati.exception.AssicuratoNotFoundException;
-import it.prova.gestioneassicurati.xml.Assicurati.Assicurato;
+import it.prova.gestioneassicurati.model.Assicurato;
 import it.prova.gestioneassicurati.repository.AssicuratoRepository;
 @Service
 public class AssicuratoServiceImpl implements AssicuratoService {
