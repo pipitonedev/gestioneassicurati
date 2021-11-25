@@ -43,4 +43,9 @@ public class AssicuratoServiceImpl implements AssicuratoService {
 
 	}
 
+	@Override
+	public Assicurato cercaPerCodiceFiscale(String codice) {
+		return assicuratoRepository.findByCodiceFiscale(codice);
+	}
+
 }

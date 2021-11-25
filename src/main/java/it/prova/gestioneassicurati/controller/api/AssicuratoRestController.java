@@ -65,28 +65,30 @@ public class AssicuratoRestController {
 		assicuratoService.delete(assicuratoService.get(id));
 	}
 
-	@GetMapping("/metodiBusiness")
+	@GetMapping("/letturafile")
 	public void letturaFileXml() {
 
+		try {
 
-			try {
+			File xmlFile = new File("C:\\corso\\ws_eclipse2\\gestioneassicurati\\fileXML\\assicurato.xml");
+			JAXBContext jaxbContext = JAXBContext.newInstance(Assicurati.class);
 
-				File xmlFile = new File(
-						"C:\\Corso\\ws_eclipse\\gestioneassicurati\\src\\main\\java\\it\\prova\\gestioneassicurati\\xml");
-				JAXBContext jaxbContext = JAXBContext.newInstance(Assicurati.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			Assicurati que = (Assicurati) jaxbUnmarshaller.unmarshal(xmlFile);
 
-				Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-				Assicurati que = (Assicurati) jaxbUnmarshaller.unmarshal(xmlFile);
+			System.out.println("Lista Assicurati:");
+			List<Assicurato> list = que.getAssicurato();
+			for (Assicurato ans : list) {
+				if (ans.getNumerosinistri().intValue() < 0 && ans.getNumerosinistri().intValue() > 10) {
+					xmlFile.renameTo(new File("C:\\corso\\ws_eclipse2\\gestioneassicurati\\scartati\\assicurato.xml"));
+					System.out.println("li ho scartati");
+				}
+				xmlFile.renameTo(new File("C:\\corso\\ws_eclipse2\\gestioneassicurati\\processati\\assicurato.xml"));
 
-				System.out.println("Lista Assicurati:");
-				List<Assicurato> list = que.getAssicurato();
-				for (Assicurato ans : list)
-					System.out.println(ans.getNome());
-
-			} catch (JAXBException e) {
-				e.printStackTrace();
 			}
 
+		} catch (JAXBException e) {
+			e.printStackTrace();
 		}
 
 	}

@@ -18,5 +18,7 @@ public interface AssicuratoService {
 	Assicurato save(Assicurato input);
 
 	void delete(Assicurato input);
+	
+	Assicurato cercaPerCodiceFiscale(String codice);
 
 }
