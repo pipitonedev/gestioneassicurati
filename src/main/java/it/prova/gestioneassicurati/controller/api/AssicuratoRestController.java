@@ -40,8 +40,10 @@ public class AssicuratoRestController {
 		final File cartella = new File("E:\\Documenti\\eserciziotrigger\\");
 
 		for (final File nuovoFile : cartella.listFiles()) {
-			String path = "E:\\Documenti\\eserciziotrigger\\" + nuovoFile.getName();
-			fileProcessingService.unmarshalling(path);
+			if (nuovoFile.getName().endsWith(".xml") || nuovoFile.getName().endsWith(".XML")) {
+				String path = "E:\\Documenti\\eserciziotrigger\\" + nuovoFile.getName();
+				fileProcessingService.unmarshalling(path);
+			}
 
 		}
 
