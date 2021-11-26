@@ -4,10 +4,10 @@ import it.prova.gestioneassicurati.xml.Assicurati;
 
 public interface FileProcessingService {
 
-	Assicurati unmarshalling();
+	public void unmarshalling(String path);
 
-	void scarta();
+	void scarta(String path);
 
-	void processa();
+	void processa(String path);
 
 }

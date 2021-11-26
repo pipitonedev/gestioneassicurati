@@ -1,5 +1,6 @@
 package it.prova.gestioneassicurati.controller.api;
 
+import java.io.File;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import it.prova.gestioneassicurati.service.AssicuratoService;
 import it.prova.gestioneassicurati.service.FileProcessingService;
 import it.prova.gestioneassicurati.service.ProcessService;
-import it.prova.gestioneassicurati.xml.Assicurati;
 import it.prova.gestioneassicurati.model.Assicurato;
 
 @RestController
@@ -37,9 +37,13 @@ public class AssicuratoRestController {
 	@ResponseStatus(HttpStatus.OK)
 	public void letturaEScritturaFileXML() {
 
-		Assicurati assicurati = fileProcessingService.unmarshalling();
+		final File cartella = new File("E:\\Documenti\\eserciziotrigger\\");
 
-		processService.databaseProcessing(assicurati);
+		for (final File nuovoFile : cartella.listFiles()) {
+			String path = "E:\\Documenti\\eserciziotrigger\\" + nuovoFile.getName();
+			fileProcessingService.unmarshalling(path);
+
+		}
 
 	}
 
